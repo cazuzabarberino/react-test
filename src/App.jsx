@@ -18,13 +18,19 @@ export const fakeLinkDownload = (url, name) => {
 function App() {
   const [count, setCount] = useState(0);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    await new Promise((resolve) => {
+      setTimeout(resolve, 5000);
+    });
+
     fakeLinkDownload("/react-test/cat.pdf");
   };
 
   return (
     <>
-      <a onClick={handleDownload}>DOWNLOAD</a>
+      <a style={{ cursor: "pointer" }} onClick={handleDownload}>
+        DOWNLOAD
+      </a>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
