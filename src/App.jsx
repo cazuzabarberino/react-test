@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+const url = "https://s3.sa-east-1.amazonaws.com/lets.events-tmp/LetsEvents-9d6dd20c-a0d3-419e-ba73-3c5b7189bc9a-1567c16b-9e81-4ddc-8849-6bcbd0652f2a.pdf"
+   
 export const fakeLinkDownload = (url, name) => {
   const fakeLink = document.createElement("A");
 
@@ -19,11 +21,11 @@ function App() {
   const [count, setCount] = useState(0);
 
   const handleDownload = async () => {
-    await new Promise((resolve) => {
-      setTimeout(resolve, 5000);
-    });
+    // await new Promise((resolve) => {
+    //   setTimeout(resolve, 5000);
+    // });
 
-    fakeLinkDownload("/react-test/cat.pdf");
+    fakeLinkDownload(url);
   };
 
   return (
