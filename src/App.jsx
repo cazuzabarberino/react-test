@@ -3,14 +3,28 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+export const fakeLinkDownload = (url, name) => {
+  const fakeLink = document.createElement("A");
+
+  fakeLink.href = url;
+  fakeLink.download = name || url.substr(url.lastIndexOf("/") + 1);
+  fakeLink.target = "_blank";
+
+  document.body.appendChild(fakeLink);
+  fakeLink.click();
+  document.body.removeChild(fakeLink);
+};
+
 function App() {
   const [count, setCount] = useState(0);
 
+  const handleDownload = () => {
+    fakeLinkDownload("/react-test/cat.pdf");
+  };
+
   return (
     <>
-      <a href="/react-test/cat.pdf" download>
-        DOWNLOAD
-      </a>
+      <a onClick={handleDownload}>DOWNLOAD</a>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
